@@ -39,22 +39,21 @@ namespace CarShopConsole
                         s.CarList.Add(newCar);
 
                         printInventory(s); 
-
                         break;
                     case 2: //Add a car to the shopping cart
                         Console.WriteLine("You choose adding car to shopping cart");
                         printInventory(s);
                         Console.WriteLine("Which car would you like to add to the shopping cart? (number)");
                         int carNumber = int.Parse(Console.ReadLine());
-
                         s.ShoppingList.Add(s.CarList[carNumber]);
+
                         printShoppingCart(s);
                         break;
-                    case 3:
-                        Console.WriteLine("Checking out");
+                    case 3: //Checkout
+                        printShoppingCart(s);
+                        Console.WriteLine("Subtotal: " + s.Checkout());
                         break;
                     default:
-                        Console.WriteLine("Invalid choice");
                         break;
                 }
 
@@ -78,6 +77,7 @@ namespace CarShopConsole
         private static void printShoppingCart(Store s)
         {
             Console.WriteLine("Cars in your shopping cart: ");
+            Console.WriteLine();
             for(int i = 0; i < s.ShoppingList.Count; i++)
             {
                 Console.WriteLine("Car # " + i + " " + s.ShoppingList[i]);
@@ -86,16 +86,20 @@ namespace CarShopConsole
 
         static public int chooseAction()
         {
+            Console.WriteLine();
             Console.WriteLine("Choose an action:");
             Console.WriteLine("1. Add a car to the store inventory");
             Console.WriteLine("2. Add a car to the shopping list");
             Console.WriteLine("3. Checkout");
             Console.WriteLine("0. Exit");
+            Console.WriteLine();
 
             string input = Console.ReadLine();
             if (int.TryParse(input, out int choice))
             {
+                Console.WriteLine();
                 Console.WriteLine("---------------------------");
+                Console.WriteLine();
             }
             else
             {
@@ -103,21 +107,5 @@ namespace CarShopConsole
             }
             return choice;
         }
-
-        //Car c = new Car("Volvo", "V70", 35000.0m);
-        //Car d = new Car("Toyota", "Corolla", 20000.0m);
-
-        //Console.WriteLine("Car c is : " + c.Brand + " " + c.Model + " " + c.Price );
-        //Console.WriteLine("Car d is : " + d.Brand + " " + d.Model + " " + d.Price );
-
-        //    Store s = new Store();
-
-        //s.ShoppingList.Add(c);
-        //    s.ShoppingList.Add(d);
-        //    decimal total = s.Checkout();
-
-        //Console.WriteLine("Total price is : " + total);
-
-        //Console.ReadLine();
     }
 }
