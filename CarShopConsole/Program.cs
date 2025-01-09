@@ -6,6 +6,8 @@ namespace CarShopConsole
     {
         static void Main(string[] args)
         {
+            Store s = new Store();
+
             Console.WriteLine("Welcome to the car store!");
 
             int action = chooseAction();
@@ -18,11 +20,34 @@ namespace CarShopConsole
 
                 switch(action)
                 {
-                    case 1:
-                        Console.WriteLine("Adding a car to the store");
+                    case 1://Add a car to the store inventory
+                        Console.WriteLine("Adding a car to the inventory");
+                        string carBrand = "";
+                        string carModel = "";
+                        decimal carPrice = 0.0m;
+
+                        Console.WriteLine("What brand is the car?");
+                        carBrand = Console.ReadLine();
+
+                        Console.WriteLine("The car is what model?");
+                        carModel = Console.ReadLine();
+
+                        Console.WriteLine("What is the value of the car?");
+                        carPrice = int.Parse(Console.ReadLine());
+
+                        Car newCar = new Car(carBrand, carModel, carPrice);
+                        s.CarList.Add(newCar);
+
+                        printInventory(s); 
+
                         break;
-                    case 2:
-                        Console.WriteLine("Adding a car to the shopping list");
+                    case 2: //Add a car to the shopping cart
+                        Console.WriteLine("You choose adding car to shopping cart");
+                        printInventory(s);
+                        Console.WriteLine("Which car would you like to add to the shopping cart? (number)");
+                        int carNumber = int.Parse(Console.ReadLine());
+
+                        s.ShoppingList.Add(s.CarList[carNumber]);
                         break;
                     case 3:
                         Console.WriteLine("Checking out");
@@ -38,10 +63,24 @@ namespace CarShopConsole
             
         }
 
+        private static void printInventory(Store s)
+        {
+            Console.WriteLine("*********CARS*********");
+            for (int i = 0; i < s.CarList.Count; i++)
+            {
+                //Console.WriteLine();
+                //Console.WriteLine(c.Brand);
+                //Console.WriteLine(c.Model);
+                //Console.WriteLine(c.Price);
+                //Console.WriteLine();
+                Console.WriteLine("Car # " + i + " " + s.CarList[i]);
+            }
+        }
+
         static public int chooseAction()
         {
             Console.WriteLine("Choose an action:");
-            Console.WriteLine("1. Add a car to the store");
+            Console.WriteLine("1. Add a car to the store inventory");
             Console.WriteLine("2. Add a car to the shopping list");
             Console.WriteLine("3. Checkout");
             Console.WriteLine("0. Exit");

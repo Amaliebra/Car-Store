@@ -25,5 +25,10 @@ namespace CarClassLibrary
             Model = b;
             Price = c;
         }
+
+        override public string ToString()
+        {
+            return Brand + " " + Model + " " + Price + "$";
+        }
     }
 }
