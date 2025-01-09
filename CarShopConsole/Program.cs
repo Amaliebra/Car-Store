@@ -48,6 +48,7 @@ namespace CarShopConsole
                         int carNumber = int.Parse(Console.ReadLine());
 
                         s.ShoppingList.Add(s.CarList[carNumber]);
+                        printShoppingCart(s);
                         break;
                     case 3:
                         Console.WriteLine("Checking out");
@@ -65,15 +66,21 @@ namespace CarShopConsole
 
         private static void printInventory(Store s)
         {
+            Console.WriteLine();
             Console.WriteLine("*********CARS*********");
+            Console.WriteLine();
             for (int i = 0; i < s.CarList.Count; i++)
             {
-                //Console.WriteLine();
-                //Console.WriteLine(c.Brand);
-                //Console.WriteLine(c.Model);
-                //Console.WriteLine(c.Price);
-                //Console.WriteLine();
                 Console.WriteLine("Car # " + i + " " + s.CarList[i]);
+            }
+        }
+
+        private static void printShoppingCart(Store s)
+        {
+            Console.WriteLine("Cars in your shopping cart: ");
+            for(int i = 0; i < s.ShoppingList.Count; i++)
+            {
+                Console.WriteLine("Car # " + i + " " + s.ShoppingList[i]);
             }
         }
 
