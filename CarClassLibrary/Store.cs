@@ -16,5 +16,18 @@ namespace CarClassLibrary
             CarList = new List<Car>();
             ShoppingList = new List<Car>();
         }
+
+        public decimal Checkout()
+        {
+            decimal totalPrice = 0.0m;
+
+            foreach (var c in ShoppingList)
+            {
+                totalPrice = totalPrice + c.Price;
+            }
+            ShoppingList.Clear();
+            return totalPrice;
+        }
+
     }
 }
