@@ -24,6 +24,8 @@ namespace CarShopConsole
                         Console.WriteLine("Adding a car to the inventory");
                         string carBrand = "";
                         string carModel = "";
+                        int carYear = 0;
+                        string carColor = "";
                         decimal carPrice = 0.0m;
 
                         Console.WriteLine("What brand is the car?");
@@ -32,10 +34,16 @@ namespace CarShopConsole
                         Console.WriteLine("The car is what model?");
                         carModel = Console.ReadLine();
 
+                        Console.WriteLine("What color is the car?");
+                        carColor = Console.ReadLine();
+
+                        Console.WriteLine("What year is the car from?");
+                        carYear = int.Parse(Console.ReadLine());
+
                         Console.WriteLine("What is the value of the car?");
                         carPrice = int.Parse(Console.ReadLine());
 
-                        Car newCar = new Car(carBrand, carModel, carPrice);
+                        Car newCar = new Car(carBrand, carModel, carPrice, carColor, carYear);
                         s.CarList.Add(newCar);
 
                         printInventory(s); 
