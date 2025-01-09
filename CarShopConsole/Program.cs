@@ -1,0 +1,7 @@
+﻿namespace CarShopConsole
+{
+    class Program
+    {
+
+    }
+}
