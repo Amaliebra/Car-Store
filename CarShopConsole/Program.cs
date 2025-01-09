@@ -38,10 +38,10 @@ namespace CarShopConsole
                         carColor = Console.ReadLine();
 
                         Console.WriteLine("What year is the car from?");
-                        carYear = int.Parse(Console.ReadLine());
+                        carYear = int.TryParse(Console.ReadLine(), out int year) ? year : 0000;
 
                         Console.WriteLine("What is the value of the car?");
-                        carPrice = int.Parse(Console.ReadLine());
+                        carPrice = decimal.TryParse(Console.ReadLine(), out decimal price) ? price : 0.0m;
 
                         Car newCar = new Car(carBrand, carModel, carPrice, carColor, carYear);
                         s.CarList.Add(newCar);
